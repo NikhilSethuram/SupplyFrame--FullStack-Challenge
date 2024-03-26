@@ -1,0 +1,4 @@
+#too many dependencies dont need to commit
+node_modules/  
+#private information dont need to commit
+.env
