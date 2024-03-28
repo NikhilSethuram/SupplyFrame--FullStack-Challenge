@@ -1,18 +1,30 @@
-var tooltipSpan = document.getElementById("details-box");
+var helper = document.getElementById("details-box");
 
 document.addEventListener("mouseover", function (e) {
-  if (e.target.tagName == "path") {
-    var content = e.target.dataset.name;
-    document.getElementById("details-box").innerHTML = content;
-    document.getElementById("details-box").style.opacity = "100%";
+  if (e.target.tagName === "path") {
+    //retrieve our state name
+    var stateFullName = e.target.getAttribute("data-name");
+    helper.textContent = stateFullName;
+    //make it fully visible and display it
+    helper.style.opacity = "1";
+    helper.style.display = "block";
   } else {
-    document.getElementById("details-box").style.opacity = "0%";
+    //hide if not hovering
+    helper.style.opacity = "0";
   }
 });
 
+//update helper position based on mouse position
 window.onmousemove = function (e) {
   var x = e.clientX,
     y = e.clientY;
-  tooltipSpan.style.top = y + 20 + "px";
-  tooltipSpan.style.left = x + "px";
+  helper.style.top = y + 20 + "px";
+  helper.style.left = x + "px";
 };
+
+document.addEventListener("mouseout", function (e) {
+  if (e.target.tagName === "path") {
+    //set to transparent when leaves a path
+    helper.style.opacity = "0";
+  }
+});
