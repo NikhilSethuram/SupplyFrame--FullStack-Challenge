@@ -4,7 +4,7 @@ var stateCapitals = {
   AL: "Montgomery",
   AK: "Anchorage",
   AZ: "Phoenix",
-  AR: "Little Rock",
+  AR: "Beaverfork",
   CA: "Sacramento",
   CO: "Denver",
   CT: "Hartford",
@@ -55,10 +55,13 @@ var stateCapitals = {
 
 document.addEventListener("mouseover", function (e) {
   if (e.target.tagName === "path") {
+    //get the state abbr.
     var stateAbbreviation = e.target.getAttribute("data-id");
+    //use our dict to get the capital/city from city
     var stateCapital = stateCapitals[stateAbbreviation];
 
     if (stateCapital) {
+      //helper function
       fetchAqiData(stateCapital, stateAbbreviation);
     }
   }
@@ -73,14 +76,15 @@ window.onmousemove = function (e) {
 
 document.addEventListener("mouseout", function (e) {
   if (e.target.tagName === "path") {
+    //hide
     helper.style.opacity = "0";
     helper.style.display = "none";
   }
 });
 
-// Function to fetch AQI data and display it
+// helper function to fetch AQI data and display it
 function fetchAqiData(city, stateAbbreviation) {
-  var apiUrl = `https://api.waqi.info/feed/${city}/?token=ef8d51fcfae8754f3004ec5099f25c39926078ef`;
+  var apiUrl = `https://api.waqi.info/feed/${city}/?token=ef8d51fcfae8754f3004ec5099f25c39926078ef`; //my API token
   fetch(apiUrl)
     .then(function (response) {
       return response.json();
@@ -91,11 +95,13 @@ function fetchAqiData(city, stateAbbreviation) {
         helper.innerHTML = `<div>${city}, ${stateAbbreviation}</div><div>AQI: ${aqi}</div>`;
         helper.style.opacity = "1";
         helper.style.display = "block";
+        //handle error
       } else {
         throw new Error("AQI data could not be retrieved");
       }
     })
     .catch(function (error) {
+      //no data avail
       console.error("Error fetching AQI data:", error);
       helper.innerHTML = `<div>${city}, ${stateAbbreviation}</div><div>AQI data unavailable</div>`;
       helper.style.opacity = "1";
