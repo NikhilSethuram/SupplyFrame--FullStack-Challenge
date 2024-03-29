@@ -24,7 +24,10 @@ Testing: The application is tested using Jest, a delightful JavaScript Testing F
 
 # SET UP
 
-Once you clone the repo
+Once you clone the repo using :
+
+1. git clone https://github.com/NikhilSethuram/SupplyFrame--FullStack-Challenge.git
+2. cd SupplyFrame--FullStack-Challenge/air-quality-app/
 
 USING DOCKER :
 
