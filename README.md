@@ -47,3 +47,4 @@ Modified package.json to include a script for test
 
 command : npm test
 this will display the output of our test to indicate success or failure
+
