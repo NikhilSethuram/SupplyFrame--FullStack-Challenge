@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    container_name: node_app
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_KEY=ef8d51fcfae8754f3004ec5099f25c39926078ef
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
