@@ -22,6 +22,10 @@ Caching Strategy: To optimize performance and reduce API calls, the application 
 
 Testing: The application is tested using Jest, a delightful JavaScript Testing Framework with a focus on simplicity.
 
+
+https://youtu.be/id4KkMSQ0ro
+
+
 # SET UP
 
 Once you clone the repo using :
